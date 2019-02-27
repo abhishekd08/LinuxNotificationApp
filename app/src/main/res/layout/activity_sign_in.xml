@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/signinactivity_parent_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SignIn.SignInActivity">
+
+    <TextView
+        android:id="@+id/signinactivity_heading_textview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Notification App"
+        android:textAlignment="center"
+        android:textSize="36dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/signinactivity_top_0.15_guideline"
+        app:layout_constraintTop_toTopOf="@id/signinactivity_top_0.15_guideline" />
+
+    <ProgressBar
+        android:id="@+id/signinactivity_progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@id/signinactivity_mail_edittext"
+        app:layout_constraintLeft_toLeftOf="@id/signinactivity_left_guideline"
+        app:layout_constraintRight_toRightOf="@id/signinactivity_right_guideline"
+        app:layout_constraintTop_toBottomOf="@id/signinactivity_heading_textview"
+        app:layout_constraintVertical_bias="0.8" />
+
+    <EditText
+        android:id="@+id/signinactivity_mail_edittext"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:drawableStart="@drawable/vector_person_black_24dp"
+        android:drawablePadding="8dp"
+        android:hint="Username"
+        android:imeOptions="actionNext"
+        android:inputType="textEmailAddress"
+        android:maxLines="1"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@id/signinactivity_top_0.6_guideline"
+        app:layout_constraintLeft_toLeftOf="@id/signinactivity_left_guideline"
+        app:layout_constraintRight_toRightOf="@id/signinactivity_right_guideline"
+        tools:text="abhishekd" />
+
+    <EditText
+        android:id="@+id/signinactivity_password_edittext"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:drawableStart="@drawable/vector_lock_black_24dp"
+        android:drawablePadding="8dp"
+        android:hint="Password"
+        android:imeOptions="actionDone"
+        android:inputType="textPassword"
+        android:maxLines="1"
+        android:textSize="20dp"
+        app:layout_constraintLeft_toLeftOf="@id/signinactivity_left_guideline"
+        app:layout_constraintRight_toRightOf="@id/signinactivity_right_guideline"
+        app:layout_constraintTop_toBottomOf="@id/signinactivity_top_0.6_guideline"
+        tools:text="abhishek" />
+
+    <Button
+        android:id="@+id/signinactivity_signup_button2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="8dp"
+        android:background="@drawable/button_primary"
+        android:elevation="8dp"
+        android:onClick="login"
+        android:text="Login"
+        android:textColor="@color/colorWhite"
+        app:layout_constraintLeft_toLeftOf="@id/signinactivity_left_guideline"
+        app:layout_constraintRight_toRightOf="@id/signinactivity_right_guideline"
+        app:layout_constraintTop_toBottomOf="@id/signinactivity_password_edittext" />
+
+    <!--<Button-->
+    <!--android:id="@+id/signinactivity_login_butoon"-->
+    <!--android:layout_width="0dp"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginLeft="16dp"-->
+    <!--android:layout_marginRight="16dp"-->
+    <!--android:background="@drawable/button_secondary"-->
+    <!--android:onClick="startSignUpScreen"-->
+    <!--android:text="Sign Up"-->
+    <!--android:textColor="@color/colorGray48"-->
+    <!--android:visibility="invisible"-->
+    <!--app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--app:layout_constraintLeft_toLeftOf="@id/signinactivity_left_guideline"-->
+    <!--app:layout_constraintRight_toRightOf="@id/signinactivity_right_guideline"-->
+    <!--app:layout_constraintTop_toBottomOf="@id/signinactivity_signup_button"-->
+    <!--app:layout_constraintVertical_bias="0.9" />-->
+
+    <TextView
+        android:id="@+id/signinactivity_signup_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginRight="8dp"
+        android:gravity="center"
+        android:text="Not registered yet ?"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/signinactivity_signup_button" />
+
+    <TextView
+        android:id="@+id/signinactivity_signup_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/colorWhite"
+        android:onClick="startSignUpScreen"
+        android:text="Sign Up"
+        android:textColor="@color/colorBlack"
+        android:textSize="20dp"
+        app:layout_constraintBaseline_toBaselineOf="@id/signinactivity_signup_textview"
+        app:layout_constraintLeft_toRightOf="@id/signinactivity_signup_textview"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/signinactivity_top_0.15_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.15" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/signinactivity_top_0.6_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.6" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/signinactivity_left_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.1" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/signinactivity_right_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.9" />
+
+</android.support.constraint.ConstraintLayout>

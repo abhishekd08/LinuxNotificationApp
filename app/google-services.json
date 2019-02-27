@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "934824356300",
+    "firebase_url": "https://linuxnotificationapp.firebaseio.com",
+    "project_id": "linuxnotificationapp",
+    "storage_bucket": "linuxnotificationapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:934824356300:android:0154c047e8f211b7",
+        "android_client_info": {
+          "package_name": "com.example.abhishek.linuxnotificationapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "934824356300-mn9eiegg256t57ju9debaerku7kv0m7t.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.abhishek.linuxnotificationapp",
+            "certificate_hash": "7b9aafbe6dca781e530b5fb2e4d0b91e4266dc1e"
+          }
+        },
+        {
+          "client_id": "934824356300-7o3u8uodmg93iqd9751tpgedhrluffhv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_2Cjos7TSX4hwIsNhIAKbaS7yNzsVLbc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "934824356300-7o3u8uodmg93iqd9751tpgedhrluffhv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
