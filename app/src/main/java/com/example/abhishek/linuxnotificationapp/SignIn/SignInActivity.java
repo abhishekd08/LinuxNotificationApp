@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.BaseTransientBottomBar;
 import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputType;
@@ -61,6 +62,14 @@ public class SignInActivity extends AppCompatActivity implements SignInContract.
         });
     }
 
+    @Override
+    protected void onStop() {
+        Log.d(TAG, "onStop: Called");
+        presenter.destroyServerResponseListenerInstance();
+        showProgressBar(false);
+        super.onStop();
+    }
+
     private void hideKeyboard() {
         View view = this.getCurrentFocus();
         if (view != null) {
@@ -77,7 +86,7 @@ public class SignInActivity extends AppCompatActivity implements SignInContract.
             public void onClick(View v) {
                 snackbar.dismiss();
             }
-        });
+        }).setActionTextColor(ContextCompat.getColor(SignInActivity.this, R.color.colorWhite));
         snackbar.show();
     }
 

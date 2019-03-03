@@ -7,6 +7,7 @@ import android.support.annotation.NonNull;
 import android.text.Editable;
 import android.util.Log;
 
+import com.example.abhishek.linuxnotificationapp.utils.Callbacks.ResponseReceiveListener;
 import com.example.abhishek.linuxnotificationapp.utils.Callbacks.ServerResponse;
 import com.example.abhishek.linuxnotificationapp.utils.Firebase.FirebaseUtils;
 import com.example.abhishek.linuxnotificationapp.utils.NetworkUtils.MyWebService;
@@ -14,7 +15,7 @@ import com.example.abhishek.linuxnotificationapp.utils.NetworkUtils.MyWebService
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class SignInPresenter implements SignInContract.ChangeListener {
+public class SignInPresenter implements SignInContract.ChangeListener, ResponseReceiveListener {
 
     public static final String TAG = "SignInPresenter";
 
@@ -28,15 +29,13 @@ public class SignInPresenter implements SignInContract.ChangeListener {
         this.signInView = signInView;
         webService = MyWebService.getInstance(context);
         serverResponse = MyWebService.getServerResponseInstance();
+        serverResponse.setResponseReceiveListener(this);
         FirebaseUtils.fetchToken(context);
+    }
 
-        serverResponse.setResponseReceiveListener(responseObject -> {
-            try {
-                processServerResponse(responseObject);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        });
+    @Override
+    public void destroyServerResponseListenerInstance() {
+        serverResponse = null;
     }
 
     @Override
@@ -107,5 +106,20 @@ public class SignInPresenter implements SignInContract.ChangeListener {
         editor.putString("mail", mail);
         editor.putString("pass", pass);
         editor.commit();
+    }
+
+    @Override
+    public void onResponseReceive(JSONObject responseObject) {
+        try {
+            processServerResponse(responseObject);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void onErrorReceived() {
+        signInView.showProgressBar(false);
+        signInView.showSnackbar("Some error occured !");
     }
 }

@@ -1,5 +1,6 @@
 package com.example.abhishek.linuxnotificationapp.utils.NetworkUtils;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.util.Log;
@@ -27,7 +28,7 @@ public class MyWebService {
     public static ServerResponse serverResponse;
 
     private RequestQueue requestQueue;
-    private String baseURL = "https://a9dd0abe.ngrok.io";
+    private String baseURL = "https://ipsemet.serveo.net";
 
     public static MyWebService getInstance(Context context) {
         if (instance == null) {
@@ -176,6 +177,7 @@ public class MyWebService {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.e(TAG, "onErrorResponse: " + error);
+                serverResponse.errorReceived();
             }
         }) {
             @Override

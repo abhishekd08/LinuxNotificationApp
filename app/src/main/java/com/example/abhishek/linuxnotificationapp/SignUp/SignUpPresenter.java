@@ -7,6 +7,7 @@ import android.support.annotation.NonNull;
 import android.text.Editable;
 import android.util.Log;
 
+import com.example.abhishek.linuxnotificationapp.utils.Callbacks.ResponseReceiveListener;
 import com.example.abhishek.linuxnotificationapp.utils.Callbacks.ServerResponse;
 import com.example.abhishek.linuxnotificationapp.utils.Firebase.FirebaseUtils;
 import com.example.abhishek.linuxnotificationapp.utils.NetworkUtils.MyWebService;
@@ -14,7 +15,7 @@ import com.example.abhishek.linuxnotificationapp.utils.NetworkUtils.MyWebService
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class SignUpPresenter implements SignUpContract.ChangeListener {
+public class SignUpPresenter implements SignUpContract.ChangeListener, ResponseReceiveListener {
 
     public static final String TAG = "SignUpPresenter";
 
@@ -27,16 +28,8 @@ public class SignUpPresenter implements SignUpContract.ChangeListener {
         this.signUpView = signUpView;
         webService = MyWebService.getInstance(context);
         serverResponse = MyWebService.getServerResponseInstance();
+        serverResponse.setResponseReceiveListener(this);
         this.context = context;
-
-        serverResponse.setResponseReceiveListener(responseObject -> {
-            try {
-                Log.d(TAG, "SignUpPresenter: Called");
-                processServerResponse(responseObject);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        });
     }
 
     @Override
@@ -104,6 +97,11 @@ public class SignUpPresenter implements SignUpContract.ChangeListener {
 
 
     @Override
+    public void destroyServerResponseListenerInstance() {
+        serverResponse = null;
+    }
+
+    @Override
     public void doSignUp(Editable mail, Editable pass) {
         if (mail.toString().isEmpty() || pass.toString().isEmpty()) {
             signUpView.showSnackbar("Enter Email and Password !");
@@ -118,5 +116,21 @@ public class SignUpPresenter implements SignUpContract.ChangeListener {
                 Log.d(TAG, "doSignUp: ");
             }
         }
+    }
+
+    @Override
+    public void onResponseReceive(JSONObject responseObject) {
+        try {
+            processServerResponse(responseObject);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void onErrorReceived() {
+        Log.d(TAG, "onErrorReceived: Called");
+        signUpView.showProgressbar(false);
+        signUpView.showSnackbar("Some Error Occured !");
     }
 }

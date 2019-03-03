@@ -10,6 +10,7 @@ import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -138,7 +139,7 @@ public class HomeActivity extends AppCompatActivity implements
             public void onClick(View v) {
                 snackbar.dismiss();
             }
-        });
+        }).setActionTextColor(ContextCompat.getColor(HomeActivity.this, R.color.colorWhite));
         snackbar.show();
     }
 

@@ -51,12 +51,6 @@ public class HomePresenter implements HomeContract.changeListener, ResponseRecei
         serverResponse.setResponseReceiveListener(this);
 
         list = new ArrayList<>();
-        //setFakeData();
-        //list = db.notificationsDao().getAll();
-        if (list.size() == 0) {
-            refreshNotifications();
-        }
-
         adapter = new NotificationAdapter(list, itemClickListener);
         }
 
@@ -175,5 +169,11 @@ public class HomePresenter implements HomeContract.changeListener, ResponseRecei
         } catch (JSONException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void onErrorReceived() {
+        homeViewUi.showProgressbar(false);
+        homeViewUi.showSnackBar("Some error occured !");
     }
 }

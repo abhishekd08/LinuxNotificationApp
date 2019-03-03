@@ -23,6 +23,9 @@ public interface SignUpContract {
     }
 
     interface ChangeListener {
+
+        public void destroyServerResponseListenerInstance();
+
         public void doSignUp(Editable mail, Editable pass);
 
         public void processServerResponse(JSONObject responseObject) throws JSONException;

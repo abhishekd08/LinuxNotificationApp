@@ -16,4 +16,10 @@ public class ServerResponse {
         }
     }
 
+    public void errorReceived(){
+        if (responseReceiveListener != null){
+            responseReceiveListener.onErrorReceived();
+        }
+    }
+
 }

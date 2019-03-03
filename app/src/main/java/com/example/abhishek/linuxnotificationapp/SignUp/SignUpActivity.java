@@ -3,6 +3,7 @@ package com.example.abhishek.linuxnotificationapp.SignUp;
 import android.content.Intent;
 import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -52,6 +53,13 @@ public class SignUpActivity extends AppCompatActivity implements SignUpContract.
         FirebaseUtils.fetchToken(this);
     }
 
+    @Override
+    protected void onStop() {
+        presenter.destroyServerResponseListenerInstance();
+        showProgressbar(false);
+        super.onStop();
+    }
+
     public void signUp(View view) {
         presenter.doSignUp(mailEdittext.getText(), passEdittext.getText());
     }
@@ -79,7 +87,7 @@ public class SignUpActivity extends AppCompatActivity implements SignUpContract.
             public void onClick(View v) {
                 snackbar.dismiss();
             }
-        });
+        }).setActionTextColor(ContextCompat.getColor(SignUpActivity.this, R.color.colorWhite));
         snackbar.show();
     }
 

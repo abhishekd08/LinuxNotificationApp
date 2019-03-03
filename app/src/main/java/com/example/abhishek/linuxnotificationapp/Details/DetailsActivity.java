@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -54,7 +55,7 @@ public class DetailsActivity extends AppCompatActivity implements DetailsContrac
             public void onClick(View v) {
                 snackbar.dismiss();
             }
-        });
+        }).setActionTextColor(ContextCompat.getColor(DetailsActivity.this, R.color.colorWhite));
         snackbar.show();
     }
 
