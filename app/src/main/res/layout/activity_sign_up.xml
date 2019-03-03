@@ -9,14 +9,49 @@
 
     <TextView
         android:id="@+id/signupactivity_heading_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="1dp"
+        android:text="notify"
+        android:textAlignment="center"
+        android:textColor="@color/colorBlack"
+        android:textSize="48dp"
+        android:textStyle="bold"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@id/signupactivity_top_0.15_guideline"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/signupactivity_heading_2_textview"
+        app:layout_constraintTop_toTopOf="@id/signupactivity_top_0.15_guideline" />
+
+    <TextView
+        android:id="@+id/signupactivity_heading_2_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/name_logo_background"
+        android:gravity="center"
+        android:paddingRight="1dp"
+        android:paddingBottom="2dp"
+        android:text="d"
+        android:textColor="#aa0000"
+        android:textSize="48dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/signupactivity_heading_textview"
+        app:layout_constraintLeft_toRightOf="@id/signupactivity_heading_textview"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/signupactivity_heading_textview" />
+
+    <TextView
+        android:id="@+id/signupactivity_sub_heading_textview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Notification App"
+        android:text="Sign Up"
         android:textAlignment="center"
-        android:textSize="36dp"
+        android:textColor="@color/colorBlack12"
+        android:textSize="30dp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@id/signupactivity_top_0.15_guideline"
-        app:layout_constraintTop_toTopOf="@id/signupactivity_top_0.15_guideline" />
+        app:layout_constraintBottom_toTopOf="@id/signupactivity_mail_edittext"
+        app:layout_constraintTop_toBottomOf="@id/signupactivity_heading_textview" />
 
     <ProgressBar
         android:id="@+id/signupactivity_progress_bar"
@@ -26,7 +61,7 @@
         app:layout_constraintBottom_toTopOf="@id/signupactivity_mail_edittext"
         app:layout_constraintLeft_toLeftOf="@id/signupactivity_left_guideline"
         app:layout_constraintRight_toRightOf="@id/signupactivity_right_guideline"
-        app:layout_constraintTop_toBottomOf="@id/signupactivity_heading_textview"
+        app:layout_constraintTop_toBottomOf="@id/signupactivity_sub_heading_textview"
         app:layout_constraintVertical_bias="0.8" />
 
     <EditText
