@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">LinuxNotificationApp</string>
+    <string name="anim_duration">400</string>
 </resources>

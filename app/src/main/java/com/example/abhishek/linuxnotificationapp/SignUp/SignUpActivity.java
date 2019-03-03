@@ -33,6 +33,8 @@ public class SignUpActivity extends AppCompatActivity implements SignUpContract.
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
+        overridePendingTransition(R.anim.enter_sign_up, R.anim.exit_sign_up);
+
 
         parentLayout = findViewById(R.id.signupactivity_parent_layout);
         mailEdittext = findViewById(R.id.signupactivity_mail_edittext);
@@ -51,6 +53,12 @@ public class SignUpActivity extends AppCompatActivity implements SignUpContract.
         });
 
         FirebaseUtils.fetchToken(this);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        overridePendingTransition(R.anim.enter_sign_up,R.anim.exit_sign_up);
     }
 
     @Override

@@ -1,6 +1,5 @@
 package com.example.abhishek.linuxnotificationapp.SignIn;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.BaseTransientBottomBar;
@@ -8,7 +7,6 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.InputType;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -16,16 +14,9 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.abhishek.linuxnotificationapp.Home.HomeActivity;
 import com.example.abhishek.linuxnotificationapp.R;
-import com.example.abhishek.linuxnotificationapp.utils.Callbacks.ResponseReceiveListener;
-import com.example.abhishek.linuxnotificationapp.utils.Callbacks.ServerResponse;
-import com.example.abhishek.linuxnotificationapp.utils.NetworkUtils.MyWebService;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class SignInActivity extends AppCompatActivity implements SignInContract.View {
 
@@ -41,6 +32,7 @@ public class SignInActivity extends AppCompatActivity implements SignInContract.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
+        overridePendingTransition(R.anim.enter_sign_in, R.anim.exit_sign_in);
 
         presenter = new SignInPresenter(this, this);
 
