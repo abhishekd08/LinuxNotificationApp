@@ -8,17 +8,15 @@ import android.support.annotation.NonNull;
 import android.util.Log;
 
 import com.example.abhishek.linuxnotificationapp.SignUp.SignUpActivity;
-import com.example.abhishek.linuxnotificationapp.utils.Callbacks.ResponseReceiveListener;
-import com.example.abhishek.linuxnotificationapp.utils.Callbacks.ServerResponse;
+import com.example.abhishek.linuxnotificationapp.utils.Callbacks.ServerResponseCallback.ResponseReceiveListener;
+import com.example.abhishek.linuxnotificationapp.utils.Callbacks.ServerResponseCallback.ServerResponse;
 import com.example.abhishek.linuxnotificationapp.utils.DatabaseUtils.Model;
 import com.example.abhishek.linuxnotificationapp.utils.DatabaseUtils.NotificationsDB;
 import com.example.abhishek.linuxnotificationapp.utils.NetworkUtils.MyWebService;
-import com.example.abhishek.linuxnotificationapp.utils.TokenUpdateService;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;
-import com.google.gson.JsonArray;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -126,6 +124,7 @@ public class HomePresenter implements HomeContract.changeListener, ResponseRecei
         }
         homeViewUi.showProgressbar(false);
         adapter.notifyDataSetChanged();
+        homeViewUi.scrollRecyclerviewToTop(list.size());
     }
 
     @Override

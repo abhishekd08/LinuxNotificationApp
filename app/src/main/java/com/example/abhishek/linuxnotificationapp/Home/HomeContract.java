@@ -15,6 +15,8 @@ public interface HomeContract {
         public void showDialogAuthError();
 
         public void showProgressbar(boolean isVisible);
+
+        public void scrollRecyclerviewToTop(int position);
     }
 
     interface changeListener {

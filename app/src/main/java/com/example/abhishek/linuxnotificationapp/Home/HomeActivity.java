@@ -2,8 +2,11 @@ package com.example.abhishek.linuxnotificationapp.Home;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
@@ -11,6 +14,7 @@ import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -83,6 +87,14 @@ public class HomeActivity extends AppCompatActivity implements
     protected void onStart() {
         super.onStart();
         presenter.refreshNotifications();
+        LocalBroadcastManager.getInstance(getApplicationContext()).registerReceiver(newNotificationBroadcastReceiver
+                , new IntentFilter("new_notification_intent"));
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        LocalBroadcastManager.getInstance(getApplicationContext()).unregisterReceiver(newNotificationBroadcastReceiver);
     }
 
     @Override
@@ -166,6 +178,11 @@ public class HomeActivity extends AppCompatActivity implements
     }
 
     @Override
+    public void scrollRecyclerviewToTop(int p) {
+        recyclerView.smoothScrollToPosition(p);
+    }
+
+    @Override
     public void onRowItemClick(int position) {
         Log.d(TAG, "onRowItemClick: position : " + position);
 
@@ -180,4 +197,11 @@ public class HomeActivity extends AppCompatActivity implements
     public void onRowItemLongClick(int position) {
         //TODO implement On Long Click
     }
+
+    private BroadcastReceiver newNotificationBroadcastReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            presenter.refreshNotificationsLocally();
+        }
+    };
 }

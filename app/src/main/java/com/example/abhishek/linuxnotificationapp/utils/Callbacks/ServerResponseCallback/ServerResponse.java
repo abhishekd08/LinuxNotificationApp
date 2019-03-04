@@ -1,4 +1,4 @@
-package com.example.abhishek.linuxnotificationapp.utils.Callbacks;
+package com.example.abhishek.linuxnotificationapp.utils.Callbacks.ServerResponseCallback;
 
 import org.json.JSONObject;
 

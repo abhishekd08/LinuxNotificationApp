@@ -1,11 +1,8 @@
 package com.example.abhishek.linuxnotificationapp.utils.NetworkUtils;
 
-import android.app.AlertDialog;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.util.Log;
-import android.widget.Toast;
-import android.widget.Toolbar;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -13,7 +10,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.abhishek.linuxnotificationapp.utils.Callbacks.ServerResponse;
+import com.example.abhishek.linuxnotificationapp.utils.Callbacks.ServerResponseCallback.ServerResponse;
 
 import org.json.JSONException;
 import org.json.JSONObject;

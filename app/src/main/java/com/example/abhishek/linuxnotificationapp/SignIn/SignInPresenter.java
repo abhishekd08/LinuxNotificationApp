@@ -7,8 +7,8 @@ import android.support.annotation.NonNull;
 import android.text.Editable;
 import android.util.Log;
 
-import com.example.abhishek.linuxnotificationapp.utils.Callbacks.ResponseReceiveListener;
-import com.example.abhishek.linuxnotificationapp.utils.Callbacks.ServerResponse;
+import com.example.abhishek.linuxnotificationapp.utils.Callbacks.ServerResponseCallback.ResponseReceiveListener;
+import com.example.abhishek.linuxnotificationapp.utils.Callbacks.ServerResponseCallback.ServerResponse;
 import com.example.abhishek.linuxnotificationapp.utils.Firebase.FirebaseUtils;
 import com.example.abhishek.linuxnotificationapp.utils.NetworkUtils.MyWebService;
 
