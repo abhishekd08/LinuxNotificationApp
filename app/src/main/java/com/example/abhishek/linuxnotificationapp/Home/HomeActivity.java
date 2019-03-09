@@ -55,13 +55,15 @@ public class HomeActivity extends AppCompatActivity implements
     private ProgressBar progressBar;
 
     private HomePresenter presenter;
+    private WeakReference<HomeContract.itemClickListener> itemClickListenerReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        presenter = new HomePresenter(this, this, new WeakReference<HomeContract.itemClickListener>(this));
+//        presenter = new HomePresenter(this, this, new WeakReference<HomeContract.itemClickListener>(this));
+        itemClickListenerReference = new WeakReference<>(this);
 
         parentLayout = findViewById(R.id.homeactivity_parent_layout);
         noNotificationLayout = findViewById(R.id.homeactivity_no_notification_layout);
@@ -74,7 +76,7 @@ public class HomeActivity extends AppCompatActivity implements
         ((LinearLayoutManager) layoutManager).setReverseLayout(true);
         ((LinearLayoutManager) layoutManager).setStackFromEnd(true);
         recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setAdapter(presenter.getAdapter());
+//        recyclerView.setAdapter(presenter.getAdapter());
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
         setSupportActionBar(toolbar);
@@ -86,7 +88,10 @@ public class HomeActivity extends AppCompatActivity implements
     @Override
     protected void onStart() {
         super.onStart();
+        presenter = new HomePresenter(this, this,itemClickListenerReference);
+        recyclerView.setAdapter(presenter.getAdapter());
         presenter.refreshNotifications();
+        showProgressbar(true);
         LocalBroadcastManager.getInstance(getApplicationContext()).registerReceiver(newNotificationBroadcastReceiver
                 , new IntentFilter("new_notification_intent"));
     }
@@ -95,6 +100,7 @@ public class HomeActivity extends AppCompatActivity implements
     protected void onStop() {
         super.onStop();
         LocalBroadcastManager.getInstance(getApplicationContext()).unregisterReceiver(newNotificationBroadcastReceiver);
+        presenter = null;
     }
 
     @Override
@@ -109,6 +115,7 @@ public class HomeActivity extends AppCompatActivity implements
         switch (id) {
             case R.id.homemenu_refresh:
                 presenter.refreshNotifications();
+                showProgressbar(true);
                 return true;
 
             case R.id.homemenu_logout:
@@ -201,6 +208,7 @@ public class HomeActivity extends AppCompatActivity implements
     private BroadcastReceiver newNotificationBroadcastReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
+            Log.d(TAG, "onReceive: Called !");
             presenter.refreshNotificationsLocally();
         }
     };

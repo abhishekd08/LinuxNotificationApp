@@ -1,6 +1,7 @@
 package com.example.abhishek.linuxnotificationapp.Details;
 
 import android.content.Context;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
@@ -44,7 +45,8 @@ public class DetailsPresenter implements DetailsContract.changeListener {
         db.notificationsDao().deleteItem(item.getId());
         if (db.notificationsDao().getFromId(item.getId()) == null) {
             Log.d(TAG, "deleteNotification: Deleted");
-            MyWebService.getInstance(context).deleteNotification(item.getTitle(), item.getBody(), item.getDatetime());
+            String mail = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext()).getString("mail","");
+            MyWebService.getInstance(context).deleteNotification(mail, item.getTitle(), item.getBody(), item.getDatetime());
             detailsViewUi.afterItemDeleted();
         } else {
             Log.d(TAG, "deleteNotification: Not Deleted");

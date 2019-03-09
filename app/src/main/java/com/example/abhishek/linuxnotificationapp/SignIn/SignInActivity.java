@@ -34,7 +34,7 @@ public class SignInActivity extends AppCompatActivity implements SignInContract.
         setContentView(R.layout.activity_sign_in);
         overridePendingTransition(R.anim.enter_sign_in, R.anim.exit_sign_in);
 
-        presenter = new SignInPresenter(this, this);
+//        presenter = new SignInPresenter(this, this);
 
         parentLayout = findViewById(R.id.signinactivity_parent_layout);
         mailEdittext = findViewById(R.id.signinactivity_mail_edittext);
@@ -55,9 +55,16 @@ public class SignInActivity extends AppCompatActivity implements SignInContract.
     }
 
     @Override
+    protected void onStart() {
+        presenter = new SignInPresenter(this, this);
+        super.onStart();
+    }
+
+    @Override
     protected void onStop() {
         Log.d(TAG, "onStop: Called");
-        presenter.destroyServerResponseListenerInstance();
+//        presenter.destroyServerResponseListenerInstance();
+        presenter = null;
         showProgressBar(false);
         super.onStop();
     }

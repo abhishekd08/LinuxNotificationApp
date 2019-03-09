@@ -20,11 +20,16 @@ public class NewNotificationService extends FirebaseMessagingService {
         Log.d(TAG, "onMessageReceived: Called");
 
         String title = remoteMessage.getNotification().getTitle();
-        String[] s = remoteMessage.getNotification().getBody().split("MSG ");
+
+        String body = remoteMessage.getNotification().getBody();
+
+        String datetime = remoteMessage.getData().get("datetime");
+
+//        String[] s = remoteMessage.getNotification().getBody().split("MSG ");
         //s[0] : datetime
         //s[1] : body
 
-        Model item = new Model(title, s[1], s[0]);
+        Model item = new Model(title, body, datetime);
         NotificationsDB db = NotificationsDB.getInstance(getApplicationContext());
         db.notificationsDao().addItem(item);
 

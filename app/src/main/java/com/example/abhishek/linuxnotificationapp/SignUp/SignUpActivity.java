@@ -6,6 +6,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -20,6 +21,8 @@ import com.example.abhishek.linuxnotificationapp.utils.Firebase.FirebaseUtils;
 
 public class SignUpActivity extends AppCompatActivity implements SignUpContract.View {
 
+    public final String TAG = "SignUpActivity";
+
     private SignUpPresenter presenter;
 
     private ConstraintLayout parentLayout;
@@ -28,8 +31,8 @@ public class SignUpActivity extends AppCompatActivity implements SignUpContract.
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        presenter = new SignUpPresenter(this, this);
-        presenter.checkAppState();
+//        presenter = new SignUpPresenter(this, this);
+//        presenter.checkAppState();
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
@@ -53,18 +56,25 @@ public class SignUpActivity extends AppCompatActivity implements SignUpContract.
         });
 
         FirebaseUtils.fetchToken(this);
+        Log.d(TAG, "onCreate: Called");
     }
 
     @Override
     protected void onStart() {
-        super.onStart();
+        presenter = new SignUpPresenter(this, this);
+        presenter.checkAppState();
         overridePendingTransition(R.anim.enter_sign_up,R.anim.exit_sign_up);
+        Log.d(TAG, "onStart: Called");
+        mailEdittext.setText("");    //-----------  Implement in MVP
+        passEdittext.setText("");    //-----------  Implement in MVP
+        super.onStart();
     }
 
     @Override
     protected void onStop() {
-        presenter.destroyServerResponseListenerInstance();
+        presenter = null;
         showProgressbar(false);
+        Log.d(TAG, "onStop: Called");
         super.onStop();
     }
 

@@ -152,13 +152,16 @@ public class HomePresenter implements HomeContract.changeListener, ResponseRecei
                     db.notificationsDao().deleteAll();
                     db.notificationsDao().addAll(tempList);
                     refreshNotificationsLocally();
+                    homeViewUi.showProgressbar(false);
 
                 } else {
                     String reason = responseObject.getString("reason");
                     if (reason.equals("database error")) {
                         homeViewUi.showSnackBar("Some error in fetching notifications !");
+                        homeViewUi.showProgressbar(false);
                     } else if (reason.equals("no notifications")) {
                         homeViewUi.showNoNotificationUI(true);
+                        homeViewUi.showProgressbar(false);
                     } else if (reason.equals("user not registered")) {
                         logout(true);
                     }

@@ -25,7 +25,7 @@ public class MyWebService {
     public static ServerResponse serverResponse;
 
     private RequestQueue requestQueue;
-    private String baseURL = "https://ipsemet.serveo.net";
+    private String baseURL = "";
 
     public static MyWebService getInstance(Context context) {
         if (instance == null) {
@@ -73,13 +73,14 @@ public class MyWebService {
         }
     }
 
-    public void deleteNotification(@NonNull String title, @NonNull String body, @NonNull String datetime) {
+    public void deleteNotification(@NonNull String mail,@NonNull String title, @NonNull String body, @NonNull String datetime) {
         try {
 
             JSONObject headers = new JSONObject();
             headers.put("Content-Type", "application/json");
 
             JSONObject jsonBody = new JSONObject();
+            jsonBody.put("mail",mail);
             jsonBody.put("title", title);
             jsonBody.put("body", body);
             jsonBody.put("datetime", datetime);
@@ -157,6 +158,7 @@ public class MyWebService {
 
     private void sendRequest(final String methodString, String path, JSONObject headers, final JSONObject bodyJson) {
         String url = baseURL + path;
+
         int method = 1;
         if (methodString.equals("POST")) {
             method = Request.Method.POST;
