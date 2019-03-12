@@ -60,7 +60,6 @@ public class SignUpPresenter implements SignUpContract.ChangeListener, ResponseR
 
     @Override
     public void processServerResponse(JSONObject responseObject) throws JSONException {
-        Log.d(TAG, "SignUpPresenter: GOT RESPONSE IN SIGN UP PRESENTER");
         String from = responseObject.getString("from");
         if (from.equals("registerUser")) {
 
@@ -113,7 +112,8 @@ public class SignUpPresenter implements SignUpContract.ChangeListener, ResponseR
                 webService.signUp(mail.toString(), pass.toString(), token);
                 signUpView.showProgressbar(true);
             } else {
-                Log.d(TAG, "doSignUp: ");
+//                Log.d(TAG, "doSignUp: ");
+                signUpView.showSnackbar("Some error occured !");
             }
         }
     }
@@ -129,7 +129,6 @@ public class SignUpPresenter implements SignUpContract.ChangeListener, ResponseR
 
     @Override
     public void onErrorReceived() {
-        Log.d(TAG, "onErrorReceived: Called");
         signUpView.showProgressbar(false);
         signUpView.showSnackbar("Some Error Occured !");
     }

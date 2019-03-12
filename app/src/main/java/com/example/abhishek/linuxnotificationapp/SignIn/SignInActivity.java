@@ -62,7 +62,6 @@ public class SignInActivity extends AppCompatActivity implements SignInContract.
 
     @Override
     protected void onStop() {
-        Log.d(TAG, "onStop: Called");
 //        presenter.destroyServerResponseListenerInstance();
         presenter = null;
         showProgressBar(false);

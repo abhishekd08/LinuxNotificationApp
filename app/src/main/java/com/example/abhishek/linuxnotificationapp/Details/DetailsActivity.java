@@ -10,6 +10,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.TextView;
 
@@ -34,6 +35,7 @@ public class DetailsActivity extends AppCompatActivity implements DetailsContrac
         parentLayout = findViewById(R.id.detailsactivity_parent_layout);
         titleTextview = findViewById(R.id.detailsactivity_title_textview);
         bodyTextview = findViewById(R.id.detailsactivity_body_textview);
+        bodyTextview.setMovementMethod(new ScrollingMovementMethod());
         datetimeTextview = findViewById(R.id.detailsactivity_datetime_textview);
 
         int id = getIntent().getIntExtra("id", -1);

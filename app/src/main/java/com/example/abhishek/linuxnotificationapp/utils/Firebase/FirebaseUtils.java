@@ -25,13 +25,12 @@ public class FirebaseUtils {
                         if (task.isSuccessful()) {
 
                             String token = task.getResult().getToken();
-                            Log.d(TAG, "onComplete: New Token : " + token);
                             SharedPreferences.Editor edit = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext()).edit();
                             edit.putString("token", token);
                             edit.commit();
 
                         } else {
-                            Log.e(TAG, "onComplete: ", task.getException());
+//                            Log.e(TAG, "onComplete: ", task.getException());
                         }
                     }
                 });

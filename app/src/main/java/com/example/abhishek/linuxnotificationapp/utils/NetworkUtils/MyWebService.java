@@ -169,7 +169,7 @@ public class MyWebService {
                 , new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                Log.d(TAG, "onResponse: " + response.toString());
+//                Log.d(TAG, "onResponse: " + response.toString());
                 serverResponse.responseReceived(response);
             }
         }, new Response.ErrorListener() {

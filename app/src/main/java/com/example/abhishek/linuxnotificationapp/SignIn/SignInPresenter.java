@@ -49,7 +49,7 @@ public class SignInPresenter implements SignInContract.ChangeListener, ResponseR
                 webService.signIn(mail.toString(), pass.toString(), token);
                 signInView.showProgressBar(true);
             } else {
-                Log.d(TAG, "doSignIn: Token is Null !");
+//                Log.d(TAG, "doSignIn: Token is Null !");
             }
         }
     }

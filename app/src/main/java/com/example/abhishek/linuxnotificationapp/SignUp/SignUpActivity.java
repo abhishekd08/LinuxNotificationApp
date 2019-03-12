@@ -56,7 +56,6 @@ public class SignUpActivity extends AppCompatActivity implements SignUpContract.
         });
 
         FirebaseUtils.fetchToken(this);
-        Log.d(TAG, "onCreate: Called");
     }
 
     @Override
@@ -64,7 +63,6 @@ public class SignUpActivity extends AppCompatActivity implements SignUpContract.
         presenter = new SignUpPresenter(this, this);
         presenter.checkAppState();
         overridePendingTransition(R.anim.enter_sign_up,R.anim.exit_sign_up);
-        Log.d(TAG, "onStart: Called");
         mailEdittext.setText("");    //-----------  Implement in MVP
         passEdittext.setText("");    //-----------  Implement in MVP
         super.onStart();
@@ -74,7 +72,6 @@ public class SignUpActivity extends AppCompatActivity implements SignUpContract.
     protected void onStop() {
         presenter = null;
         showProgressbar(false);
-        Log.d(TAG, "onStop: Called");
         super.onStop();
     }
 

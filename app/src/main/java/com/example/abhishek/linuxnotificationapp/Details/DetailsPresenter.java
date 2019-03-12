@@ -36,7 +36,7 @@ public class DetailsPresenter implements DetailsContract.changeListener {
         } else {
             item = db.notificationsDao().getFromId(id);
             detailsViewUi.updateUI(item);
-            Log.d(TAG, "getDetails: " + item.toString());
+//            Log.d(TAG, "getDetails: " + item.toString());
         }
     }
 
@@ -44,12 +44,12 @@ public class DetailsPresenter implements DetailsContract.changeListener {
     public void deleteNotification() {
         db.notificationsDao().deleteItem(item.getId());
         if (db.notificationsDao().getFromId(item.getId()) == null) {
-            Log.d(TAG, "deleteNotification: Deleted");
+//            Log.d(TAG, "deleteNotification: Deleted");
             String mail = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext()).getString("mail","");
             MyWebService.getInstance(context).deleteNotification(mail, item.getTitle(), item.getBody(), item.getDatetime());
             detailsViewUi.afterItemDeleted();
         } else {
-            Log.d(TAG, "deleteNotification: Not Deleted");
+//            Log.d(TAG, "deleteNotification: Not Deleted");
         }
     }
 }

@@ -56,7 +56,7 @@
         android:focusableInTouchMode="true"
         android:marqueeRepeatLimit="marquee_forever"
         android:padding="8dp"
-        android:scrollHorizontally="true"
+        android:scrollbars="vertical"
         android:text="dfsgdfsgsdfg sdfg sdfg sd fg dsfg sdfg sdf gsd fgs dfg sdfgsdfg sdf g dsfg sdf g dsfg sdf gsdf gd
         f dfgsdfgsdf gsdfgsd fgdsfg sdfgdsfg sdfgsdf gsdfg sdfgsd fgsdfdfgsdfg
         sdfgdsf gsdfg sdfg sdfg sdf gsdf gg"

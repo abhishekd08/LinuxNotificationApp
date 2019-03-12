@@ -191,8 +191,6 @@ public class HomeActivity extends AppCompatActivity implements
 
     @Override
     public void onRowItemClick(int position) {
-        Log.d(TAG, "onRowItemClick: position : " + position);
-
         int itemId = presenter.getItemId(position);
         Intent detailsIntent = new Intent(HomeActivity.this, DetailsActivity.class);
         detailsIntent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
@@ -208,7 +206,6 @@ public class HomeActivity extends AppCompatActivity implements
     private BroadcastReceiver newNotificationBroadcastReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            Log.d(TAG, "onReceive: Called !");
             presenter.refreshNotificationsLocally();
         }
     };

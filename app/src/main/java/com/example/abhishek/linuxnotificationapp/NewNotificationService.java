@@ -17,8 +17,6 @@ public class NewNotificationService extends FirebaseMessagingService {
     public void onMessageReceived(RemoteMessage remoteMessage) {
         super.onMessageReceived(remoteMessage);
 
-        Log.d(TAG, "onMessageReceived: Called");
-
         String title = remoteMessage.getNotification().getTitle();
 
         String body = remoteMessage.getNotification().getBody();
